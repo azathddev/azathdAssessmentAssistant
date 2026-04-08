@@ -58,8 +58,7 @@ urlpatterns = [
         HealthCheckView.as_view(
             checks=[
                 'health_check.Cache',
-                'health_check.Database',
-                'health_check.Storage',
+                'health_check.Database'
             ],
         ),
         name='health_check',
