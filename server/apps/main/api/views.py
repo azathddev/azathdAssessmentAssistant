@@ -8,36 +8,36 @@ from dmr.errors import ErrorType
 from dmr.metadata import ResponseSpec
 from dmr.plugins.msgspec import MsgspecSerializer
 
-from server.apps.main.logic.usecases import blogpost_create, blogpost_get
+from server.apps.main.logic.usecases import game_create, game_get
 from server.apps.main.logic.value_objects import (
-    BlogPostCreatePayload,
-    BlogPostFullPayload,
+    GameCreatePayload,
+    GameFullPayload,
 )
-from server.apps.main.models import BlogPost
+from server.apps.main.models import Game
 from server.common.di import HasContainer
 
 
 @final
-class BlogPostCreate(
+class GameCreate(
     HasContainer,
     Controller[MsgspecSerializer],
 ):
-    """Top level endpoints for the ``BlogPost`` model."""
+    """Top level endpoints for the ``Game`` model."""
 
     def post(
         self,
-        parsed_body: Body[BlogPostCreatePayload],
-    ) -> BlogPostFullPayload:
-        """Create new ``BlogPost`` model."""
-        return self.resolve(blogpost_create.CreateBlogPost)(parsed_body)
+        parsed_body: Body[GameCreatePayload],
+    ) -> GameFullPayload:
+        """Create new ``Game`` model."""
+        return self.resolve(game_create.CreateGame)(parsed_body)
 
 
 @final
-class BlogPostGet(
+class GameGet(
     HasContainer,
     Controller[MsgspecSerializer],
 ):
-    """Endpoints that only require a path for ``BlogPost`` models."""
+    """Endpoints that only require a path for ``Game`` models."""
 
     @modify(
         extra_responses=[
@@ -47,9 +47,9 @@ class BlogPostGet(
             ),
         ],
     )
-    def get(self) -> BlogPostFullPayload:
-        """Return existing ``BlogPost`` model by id."""
-        return self.resolve(blogpost_get.GetBlogPost)(self.kwargs['id'])
+    def get(self) -> GameFullPayload:
+        """Return existing ``Game`` model by id."""
+        return self.resolve(game_get.GetGame)(self.kwargs['id'])
 
     @override
     def handle_error(
@@ -61,7 +61,7 @@ class BlogPostGet(
         """Handle specific errors for this controller."""
         # Since it is the only error that can happen here,
         # we don't reach full coverage:
-        if isinstance(exc, BlogPost.DoesNotExist):  # pragma: no branch
+        if isinstance(exc, Game.DoesNotExist):  # pragma: no branch
             return self.to_error(
                 self.format_error(
                     'Blog post not found',

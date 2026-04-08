@@ -1,22 +1,23 @@
 from typing import Annotated, final
+from uuid import UUID
 
 import msgspec
 
-from server.apps.main.logic.constants import POST_TITLE_MAX_LENGTH
+from server.apps.main.logic.constants import GAME_TITLE_MAX_LENGTH
 
 
-class BlogPostCreatePayload(msgspec.Struct):
-    """Used to create ``BlogPost`` models."""
+class GameCreatePayload(msgspec.Struct):
+    """Used to create ``Game`` models."""
 
     title: Annotated[
         str,
-        msgspec.Meta(min_length=1, max_length=POST_TITLE_MAX_LENGTH),
+        msgspec.Meta(min_length=1, max_length=GAME_TITLE_MAX_LENGTH),
     ]
-    body: str
+    game_uuid: UUID
 
 
 @final
-class BlogPostFullPayload(BlogPostCreatePayload):
-    """Used to represent existing ``BlogPost`` models."""
+class GameFullPayload(GameCreatePayload):
+    """Used to represent existing ``Game`` models."""
 
     id: int

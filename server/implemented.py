@@ -5,6 +5,8 @@ from typing import Any
 
 import punq
 
+from server.apps.main.logic.usecases import game_create
+
 
 def _global_namespace() -> dict[str, Any]:
     from django.conf import LazySettings  # noqa: F401
@@ -37,7 +39,7 @@ def _inject_django(container: punq.Container) -> None:
 
 def _inject_main(container: punq.Container) -> None:
     from server.apps.main.infra import mappers, repository
-    from server.apps.main.logic.usecases import blogpost_create, blogpost_get
+    from server.apps.main.logic.usecases import game_get
 
     # Hacks to resolve annotations:
     inject = _create_injector(container, locals())  # noqa: WPS421
@@ -46,8 +48,8 @@ def _inject_main(container: punq.Container) -> None:
     container.register(repository.BlogPostRepo)
     container.register(mappers.BlogPostMapper)
 
-    container.register(inject(blogpost_create.CreateBlogPost))
-    container.register(inject(blogpost_get.GetBlogPost))
+    container.register(inject(game_create.CreateBlogPost))
+    container.register(inject(game_get.GetBlogPost))
 
 
 def populate_dependencies(container: punq.Container) -> punq.Container:

@@ -4,22 +4,22 @@ from typing import final
 
 import attrs
 
-from server.apps.main.logic.value_objects import BlogPostCreatePayload
-from server.apps.main.models import BlogPost
+from server.apps.main.logic.value_objects import GameCreatePayload
+from server.apps.main.models import Game
 
 
 @final
 @attrs.define(slots=True, frozen=True)
-class BlogPostRepo:
-    """Repository for the ``BlogPost`` model."""
+class GameRepo:
+    """Repository for the ``Game`` model."""
 
-    def create(self, parsed_body: BlogPostCreatePayload) -> BlogPost:
-        """Creates new ``BlogPost`` model."""
-        return BlogPost.objects.create(
+    def create(self, parsed_body: GameCreatePayload) -> Game:
+        """Creates new ``Game`` model."""
+        return Game.objects.create(
             title=parsed_body.title,
-            body=parsed_body.body,
+            game_uuid=parsed_body.game_uuid,
         )
 
-    def get_by_id(self, blog_post_id: int) -> BlogPost:
-        """Return ``BlogPost`` model by the primary key."""
-        return BlogPost.objects.get(pk=blog_post_id)
+    def get_by_id(self, game_id: int) -> Game:
+        """Return ``Game`` model by the primary key."""
+        return Game.objects.get(pk=game_id)

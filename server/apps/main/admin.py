@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from server.apps.main.models import BlogPost
+from server.apps.main.models import Game
 
 
-@admin.register(BlogPost)
-class BlogPostAdmin(admin.ModelAdmin[BlogPost]):
-    """Admin panel example for ``BlogPost`` model."""
+@admin.register(Game)
+class BlogPostAdmin(admin.ModelAdmin[Game]):
+    """Admin panel for Game """

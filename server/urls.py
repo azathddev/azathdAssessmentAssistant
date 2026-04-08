@@ -27,7 +27,6 @@ from health_check.views import HealthCheckView
 
 from server.apps.main import urls as main_urls
 from server.apps.main.api import urls as main_api_urls
-from server.apps.main.views import index
 
 admin.autodiscover()
 
@@ -83,8 +82,6 @@ urlpatterns = [
         ),
         name='humans_txt',
     ),
-    # It is a good practice to have explicit index view:
-    path('', index, name='index'),
 ]
 
 if settings.DEBUG:  # pragma: no cover

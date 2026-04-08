@@ -4,19 +4,19 @@ from typing import final
 
 import attrs
 
-from server.apps.main.logic.value_objects import BlogPostFullPayload
-from server.apps.main.models import BlogPost
+from server.apps.main.logic.value_objects import GameFullPayload
+from server.apps.main.models import Game
 
 
 @final
 @attrs.define(slots=True, frozen=True)
-class BlogPostMapper:
-    """Preserves all properties of a ``BlogPost``."""
+class GameMapper:
+    """Preserves all properties of a ``Game``."""
 
-    def __call__(self, blog_post: BlogPost) -> BlogPostFullPayload:
+    def __call__(self, game: Game) -> GameFullPayload:
         """Map model to a DTO instance."""
-        return BlogPostFullPayload(
-            id=blog_post.id,
-            title=blog_post.title,
-            body=blog_post.body,
+        return GameFullPayload(
+            id=game.id,
+            title=game.title,
+            game_uuid=game.game_uuid,
         )

@@ -5,8 +5,8 @@ from typing import TYPE_CHECKING, final
 import attrs
 
 from server.apps.main.logic.value_objects import (
-    BlogPostCreatePayload,
-    BlogPostFullPayload,
+    GameCreatePayload,
+    GameFullPayload,
 )
 
 if TYPE_CHECKING:
@@ -15,16 +15,16 @@ if TYPE_CHECKING:
 
 @final
 @attrs.define(slots=True, frozen=True)
-class CreateBlogPost:
-    """Creates ``BlogPost`` instances."""
+class CreateGame:
+    """Creates ``Game`` instances."""
 
-    _repository: repository.BlogPostRepo
-    _mapper: mappers.BlogPostMapper
+    _repository: repository.GameRepo
+    _mapper: mappers.GameMapper
 
     def __call__(
         self,
-        parsed_body: BlogPostCreatePayload,
-    ) -> BlogPostFullPayload:
+        parsed_body: GameCreatePayload,
+    ) -> GameFullPayload:
         """
         There's no real story to tell about this example.
 
