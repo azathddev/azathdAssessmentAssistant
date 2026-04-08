@@ -5,6 +5,6 @@ from server.apps.main.api import views
 app_name = 'main'
 
 urlpatterns = [
-    path('users/', views.BlogPostCreate.as_view(), name='blog_post_create'),
-    path('users/<int:id>', views.BlogPostGet.as_view(), name='blog_post_get'),
+    path('games/', views.GameCreate.as_view(), name='game_create'),
+    path('games/<int:id>', views.GameGet.as_view(), name='game_get'),
 ]
