@@ -2,6 +2,7 @@ import textwrap
 from typing import final, override
 
 from django.db import models
+from django.contrib.auth.models import User
 
 from server.apps.main.logic.constants import GAME_TITLE_MAX_LENGTH
 
@@ -22,3 +23,22 @@ class Game(models.Model):
     @override
     def __str__(self) -> str:
         return textwrap.wrap(self.title, GAME_TITLE_MAX_LENGTH // 4)[0]
+
+
+@final
+class Appointment(models.Model):
+
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Appointment'
+        verbose_name_plural = 'Appointments'
+
+    @override
+    def __str__(self) -> str:
+        return textwrap.wrap(f'{self.user.id}: {self.game.id}', 50)[0]

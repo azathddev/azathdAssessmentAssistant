@@ -21,3 +21,17 @@ class GameFullPayload(GameCreatePayload):
     """Used to represent existing ``Game`` models."""
 
     id: int
+
+
+class AppointmentCreatePayload(msgspec.Struct):
+    """Used to create ``Appointment`` models."""
+
+    game_id: int
+    user_id: int
+    is_active: bool | None
+
+
+@final
+class AppointmentFullPayload(AppointmentCreatePayload):
+    """Used to represent existing ``Appointment`` models."""
+    id: int

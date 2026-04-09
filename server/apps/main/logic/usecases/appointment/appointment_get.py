@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, final
 
 import attrs
 
-from server.apps.main.logic.value_objects import GameCreatePayload, GameFullPayload
+from server.apps.main.logic.value_objects import AppointmentCreatePayload, AppointmentFullPayload
 
 if TYPE_CHECKING:
     from server.apps.main.infra import mappers, repository
@@ -12,17 +12,17 @@ if TYPE_CHECKING:
 
 @final
 @attrs.define(slots=True, frozen=True)
-class GetGame:
-    """Get ``Game`` models by primary key."""
+class GetAppointment:
+    """Get ``Appointment`` models by primary key."""
 
-    _repository: repository.GameRepo
-    _mapper: mappers.GameMapper
+    _repository: repository.AppointmentRepo
+    _mapper: mappers.AppointmentMapper
 
-    def __call__(self, game_id: int) -> GameFullPayload:
+    def __call__(self, appointment_id: int) -> AppointmentFullPayload:
         """
         There's no real story to tell about this example.
 
         But here you need to put a text description of what business
         needs to be done in this usecase.
         """
-        return self._mapper(self._repository.get_by_id(game_id))
+        return self._mapper(self._repository.get_by_id(appointment_id))
