@@ -18,5 +18,5 @@ class GameMapper:
         return GameFullPayload(
             id=game.id,
             title=game.title,
-            game_uuid=game.game_uuid,
+            mode_formula=game.mode_formula,
         )

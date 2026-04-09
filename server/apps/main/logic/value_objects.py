@@ -13,7 +13,7 @@ class GameCreatePayload(msgspec.Struct):
         str,
         msgspec.Meta(min_length=1, max_length=GAME_TITLE_MAX_LENGTH),
     ]
-    game_uuid: UUID
+    mode_formula: str
 
 
 @final

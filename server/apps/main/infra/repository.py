@@ -17,7 +17,7 @@ class GameRepo:
         """Creates new ``Game`` model."""
         return Game.objects.create(
             title=parsed_body.title,
-            game_uuid=parsed_body.game_uuid,
+            mode_formula=parsed_body.mode_formula,
         )
 
     def get_by_id(self, game_id: int) -> Game:
