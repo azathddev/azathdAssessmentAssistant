@@ -40,4 +40,19 @@ jobs:
         uv run python manage.py migrate
     - name: Run Server
       run: |
-        uv run python -We -bb manage.py runserver 0.0.0.0:8000 
+        uv run python -We -bb manage.py runserver 0.0.0.0:8000 &
+
+        # Ждём 5 секунд для старта сервера
+        sleep 5
+
+        # Проверяем доступность через curl
+        curl --retry 5 --retry-delay 1 --retry-max-time 30 http://localhost:8000 || exit 1
+
+        # Опционально: проверяем конкретный эндпоинт
+        curl http://localhost:8000/health/ || exit 1
+
+        # Останавливаем сервер (убиваем все процессы python)
+        pkill -f "runserver" || true
+
+    - name: Additional health check
+      run: python manage.py check --deploy
