@@ -11,7 +11,7 @@ from server.apps.main.logic.constants import GAME_TITLE_MAX_LENGTH
 class Game(models.Model):
 
     title = models.CharField(max_length=GAME_TITLE_MAX_LENGTH)
-    mode_formula = models.CharField(max_length=255, null=True)
+    mode_formula = models.CharField(max_length=255)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -41,4 +41,4 @@ class Appointment(models.Model):
 
     @override
     def __str__(self) -> str:
-        return textwrap.wrap(f'{self.user.id}: {self.game.id}', 50)[0]
+        return textwrap.wrap(f'{self.user.username}: {self.game.mode_formula}', 50)[0]
