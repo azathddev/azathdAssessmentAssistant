@@ -189,5 +189,3 @@ EXTRA_CHECKS = {
 # Disable persistent DB connections
 # https://docs.djangoproject.com/en/6.0/ref/databases/#caveats
 DATABASES['default']['CONN_MAX_AGE'] = 0
-
-AUTH_USER_MODEL = 'auth.User'

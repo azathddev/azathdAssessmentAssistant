@@ -22,6 +22,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS: tuple[str, ...] = (
     # Your apps go here:
     'server.apps.main',
+    'server.apps.auth'
     # Default django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -197,3 +198,6 @@ PERMISSIONS_POLICY: dict[str, str | list[str]] = {}
 # https://docs.djangoproject.com/en/6.0/ref/settings/#std:setting-EMAIL_TIMEOUT
 
 EMAIL_TIMEOUT = 5
+
+AUTH_USER_MODEL = 'auth.User'
+

@@ -26,14 +26,16 @@ from dmr.routing import Router, build_404_handler, build_500_handler, path
 from health_check.views import HealthCheckView
 
 from server.apps.main import urls as main_urls
-from server.apps.auth.api import urls as main_api_urls
+from server.apps.main.api import urls as main_api_urls
+from server.apps.auth.api import urls as auth_api_urls
 
 admin.autodiscover()
 
 router = Router(
     'api/',
     [
-        path('user/', include(main_api_urls, namespace='main')),
+        path('', include(main_api_urls, namespace='main')),
+        path('', include(auth_api_urls, namespace='auth')),
     ],
 )
 schema = build_schema(router)
@@ -43,7 +45,7 @@ handler500 = build_500_handler(router.prefix, serializer=MsgspecSerializer)
 
 urlpatterns = [
     # Apps:
-    path('main/', include(main_urls, namespace='main')),
+    path('api/', include(main_urls, namespace='main')),
     # Apis:
     path(router.prefix, include((router.urls, 'server'), namespace='api')),
     # OpenAPI:
