@@ -22,7 +22,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS: tuple[str, ...] = (
     # Your apps go here:
     'server.apps.main',
-    'server.apps.user-auth',
+    'server.apps.user_auth',
     # Default django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +57,7 @@ MIDDLEWARE: tuple[str, ...] = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.user-auth.middleware.AuthenticationMiddleware',
+    'django.contrib.user_auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Axes:
@@ -140,7 +140,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # Default template context processors:
-                'django.contrib.user-auth.context_processors.user-auth',
+                'django.contrib.user_auth.context_processors.user_auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
@@ -166,13 +166,13 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
-    'django.contrib.user-auth.backends.ModelBackend',
+    'django.contrib.user_auth.backends.ModelBackend',
 )
 
 PASSWORD_HASHERS = [
-    'django.contrib.user-auth.hashers.Argon2PasswordHasher',
-    'django.contrib.user-auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.user-auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.user_auth.hashers.Argon2PasswordHasher',
+    'django.contrib.user_auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.user_auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
 
@@ -199,5 +199,5 @@ PERMISSIONS_POLICY: dict[str, str | list[str]] = {}
 
 EMAIL_TIMEOUT = 5
 
-AUTH_USER_MODEL = 'user-auth.User'
+AUTH_USER_MODEL = 'user_auth.User'
 
