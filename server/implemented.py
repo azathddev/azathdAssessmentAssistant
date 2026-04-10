@@ -5,7 +5,7 @@ from typing import Any
 
 import punq
 
-from server.apps.main.logic.usecases import game_create
+from server.apps.main.logic.usecases.game import game_create, game_get
 
 
 def _global_namespace() -> dict[str, Any]:
@@ -39,7 +39,6 @@ def _inject_django(container: punq.Container) -> None:
 
 def _inject_main(container: punq.Container) -> None:
     from server.apps.main.infra import mappers, repository
-    from server.apps.main.logic.usecases import game_get
 
     # Hacks to resolve annotations:
     inject = _create_injector(container, locals())  # noqa: WPS421
