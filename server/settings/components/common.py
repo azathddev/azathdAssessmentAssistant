@@ -24,7 +24,6 @@ INSTALLED_APPS: tuple[str, ...] = (
     'server.apps.main',
     'server.apps.auth',
     # Default django apps:
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
