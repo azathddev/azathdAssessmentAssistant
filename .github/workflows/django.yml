@@ -55,4 +55,4 @@ jobs:
         pkill -f "runserver" || true
 
     - name: Additional health check
-      run: python manage.py check --deploy
+      run: uv run python manage.py check --deploy
