@@ -57,7 +57,7 @@ MIDDLEWARE: tuple[str, ...] = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.user_auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Axes:
@@ -140,7 +140,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # Default template context processors:
-                'django.contrib.user_auth.context_processors.user_auth',
+                'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
@@ -166,13 +166,13 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
-    'django.contrib.user_auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 PASSWORD_HASHERS = [
-    'django.contrib.user_auth.hashers.Argon2PasswordHasher',
-    'django.contrib.user_auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.user_auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
 

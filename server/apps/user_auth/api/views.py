@@ -8,14 +8,14 @@ from dmr.errors import ErrorType
 from dmr.metadata import ResponseSpec
 from dmr.plugins.msgspec import MsgspecSerializer
 
-from server.apps.auth.logic.value_objects import UserRegisterPayload, UserFullPayload, UserLoginPayload, \
+from server.apps.user_auth.logic.value_objects import UserRegisterPayload, UserFullPayload, UserLoginPayload, \
     UserCredentialsPayload
-from server.apps.auth.logic.usecases import user_login, user_register
-from server.apps.auth.logic.value_objects import (
+from server.apps.user_auth.logic.usecases import user_login, user_register
+from server.apps.user_auth.logic.value_objects import (
     UserRegisterPayload, UserFullPayload,
     UserLoginPayload, UserCredentialsPayload
 )
-from server.apps.auth.models import User
+from server.apps.user_auth.models import User
 from server.common.di import HasContainer
 
 

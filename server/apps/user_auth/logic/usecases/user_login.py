@@ -4,14 +4,14 @@ from typing import TYPE_CHECKING, final
 
 import attrs
 
-from server.apps.auth.logic.value_objects import (
+from server.apps.user_auth.logic.value_objects import (
     UserLoginPayload,
     UserCredentialsPayload,
 )
 
 if TYPE_CHECKING:
-    from server.apps.auth.infra import mappers, repository
-    import server.apps.auth.logic.services.auth_service as service
+    from server.apps.user_auth.infra import mappers, repository
+    import server.apps.user_auth.logic.services.auth_service as service
 
 
 @final

@@ -1,6 +1,6 @@
 from dmr.routing import path
 
-from server.apps.auth.api import views
+from server.apps.user_auth.api import views
 
 app_name = 'user_auth'
 

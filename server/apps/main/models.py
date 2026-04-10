@@ -2,7 +2,6 @@ import textwrap
 from typing import final, override
 
 from django.db import models
-from django.contrib.auth.models import User
 
 from server.apps.main.logic.constants import GAME_TITLE_MAX_LENGTH
 
@@ -29,7 +28,7 @@ class Game(models.Model):
 class Appointment(models.Model):
 
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey('user_auth.User', on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
