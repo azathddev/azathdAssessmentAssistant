@@ -41,4 +41,4 @@ class Appointment(models.Model):
 
     @override
     def __str__(self) -> str:
-        return textwrap.wrap(f'{self.user.id}: {self.game.id}', 50)[0]
+        return textwrap.wrap(f'{self.user.username}: {self.game.mode_formula}', 50)[0]
