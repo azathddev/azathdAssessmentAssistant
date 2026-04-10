@@ -26,7 +26,7 @@ from dmr.routing import Router, build_404_handler, build_500_handler, path
 from health_check.views import HealthCheckView
 
 from server.apps.main import urls as main_urls
-from server.apps.main.api import urls as main_api_urls
+from server.apps.auth.api import urls as main_api_urls
 
 admin.autodiscover()
 

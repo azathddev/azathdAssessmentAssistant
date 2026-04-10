@@ -1,10 +1,12 @@
 from dmr.routing import path
 
-from server.apps.auth.api import views
+from server.apps.main.api import views
 
-app_name = 'auth'
+app_name = 'main'
 
 urlpatterns = [
-    path('auth/login/', ..., name='user_login'),
-    path('auth/register/', ..., name='user_register'),
+    path('games/', views.GameCreate.as_view(), name='game_create'),
+    path('games/<int:id>', views.GameGet.as_view(), name='game_get'),
+    path('appointments/<int:id>', views.AppointmentGet.as_view(), name='appointment_get'),
+    path('appointments/', views.AppointmentCreate.as_view(), name='appointment_create'),
 ]
