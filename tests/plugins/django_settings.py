@@ -15,7 +15,7 @@ def _media_root(
 def _password_hashers(settings: LazySettings) -> None:
     """Forces django to use fast password hashers for tests."""
     settings.PASSWORD_HASHERS = [
-        'django.contrib.auth.hashers.MD5PasswordHasher',
+        'django.contrib.user-auth.hashers.MD5PasswordHasher',
     ]
 
 
@@ -23,7 +23,7 @@ def _password_hashers(settings: LazySettings) -> None:
 def _auth_backends(settings: LazySettings) -> None:
     """Deactivates security backend from Axes app."""
     settings.AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
+        'django.contrib.user-auth.backends.ModelBackend',
     )
 
 

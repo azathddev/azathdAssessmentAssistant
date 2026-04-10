@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AuthConfig(AppConfig):
-    name = 'server.apps.auth'
+    name = 'server.apps.user-auth'

@@ -21,7 +21,7 @@ def test_health_check(client: Client) -> None:
 
 
 def test_admin_unauthorized(client: Client) -> None:
-    """Ensures that admin panel requires auth."""
+    """Ensures that admin panel requires user-auth."""
     response = client.get(_ADMIN_URL)
 
     assert response.status_code == HTTPStatus.FOUND
@@ -35,7 +35,7 @@ def test_admin_authorized(admin_client: Client) -> None:
 
 
 def test_admin_docs_unauthorized(client: Client) -> None:
-    """Ensures that admin panel docs requires auth."""
+    """Ensures that admin panel docs requires user-auth."""
     response = client.get(_ADMIN_DOC_URL)
 
     assert response.status_code == HTTPStatus.FOUND

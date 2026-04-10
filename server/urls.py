@@ -35,7 +35,7 @@ router = Router(
     'api/',
     [
         path('', include(main_api_urls, namespace='main')),
-        path('', include(auth_api_urls, namespace='auth')),
+        path('', include(auth_api_urls, namespace='user-auth')),
     ],
 )
 schema = build_schema(router)

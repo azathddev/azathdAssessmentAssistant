@@ -22,8 +22,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS: tuple[str, ...] = (
     # Your apps go here:
     'server.apps.main',
-    'server.apps.auth',
+    'server.apps.user-user-auth',
     # Default django apps:
+    'django.contrib.user-auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -56,7 +57,7 @@ MIDDLEWARE: tuple[str, ...] = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.user-auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Axes:
@@ -139,7 +140,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # Default template context processors:
-                'django.contrib.auth.context_processors.auth',
+                'django.contrib.user-auth.context_processors.user-auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
@@ -165,13 +166,13 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.user-auth.backends.ModelBackend',
 )
 
 PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.Argon2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.user-auth.hashers.Argon2PasswordHasher',
+    'django.contrib.user-auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.user-auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
 
@@ -198,5 +199,5 @@ PERMISSIONS_POLICY: dict[str, str | list[str]] = {}
 
 EMAIL_TIMEOUT = 5
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'user-auth.User'
 
