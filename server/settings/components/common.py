@@ -22,9 +22,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS: tuple[str, ...] = (
     # Your apps go here:
     'server.apps.main',
-    'server.apps.user-user-auth',
+    'server.apps.user-auth',
     # Default django apps:
-    'django.contrib.user-auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
