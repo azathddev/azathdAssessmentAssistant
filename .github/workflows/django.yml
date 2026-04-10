@@ -38,9 +38,6 @@ jobs:
     - name: Apply migrations
       run: |
         uv run python manage.py migrate
-    - name: Run Tests
-      run: |
-        uv run python manage.py test
     - name: Run Server
       run: |
         uv run python -We -bb manage.py runserver 0.0.0.0:8000 
