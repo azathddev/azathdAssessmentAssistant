@@ -26,6 +26,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install uv
         uv sync
+    - name: Setup project
+      run: |
+        cp docker/.env.template docker/.env
+    - name: Run Database
+      run: |
+        docker compose up db --build -d
     - name: Making migrations
       run: |
         uv run python manage.py makemigrations
